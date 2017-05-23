@@ -8,11 +8,12 @@ import model.Model;
 import view.game.GGrid;
 import view.game.Square;
 
-public class RandomIA implements Observer {
+public class RandomIA extends IA {
 	GGrid grid;
 	Model model;
 	
 	public RandomIA(GGrid gGrid,Model model){
+		super();
 		this.grid = gGrid;
 		this.model = model;
 	}
