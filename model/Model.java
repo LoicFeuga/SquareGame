@@ -9,7 +9,6 @@ public class Model extends Observable{
 	
 	Grid grid;
 	int niveauJ1;
-
 	int niveauJ2;
 	int x;
 	int y;
@@ -35,23 +34,21 @@ public class Model extends Observable{
 		notifyObservers(hm);
 	}
 	
+	public int getTurn(){
+		return playerTurn;
+	}
 	public void playerTurn(int x, int y){
 		grid.setXY(x, y, playerTurn);
 		playerTurn = playerTurn == 1 ? 2 : 1;
 		grid.print();
 
-		
-		try {
-			Thread.sleep(1000);
 
-			setChanged();
-			HashMap m = new HashMap();
-			m.put("ia", true);
-			notifyObservers(m);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		HashMap hm = new HashMap();
+
+		hm.put("turn", playerTurn);
+		setChanged();
+		notifyObservers(hm);
+
 		
 		
 	}
@@ -71,6 +68,14 @@ public class Model extends Observable{
 	public int getY() {
 		return y;
 	}
+	
+	public int getXMax(){
+		return grid.getXMax();
+	}
+	
+	public int getYMax(){
+		return grid.getYMax();
+	}
 
 	public void setNiveauJ1(int niveauJ1) {
 		this.niveauJ1 = niveauJ1;
@@ -86,6 +91,11 @@ public class Model extends Observable{
 
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public void turn() {
+
+		
 	}
 
 }

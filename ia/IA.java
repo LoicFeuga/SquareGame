@@ -5,10 +5,18 @@ import java.util.Observer;
 
 public class IA implements Observer {
 
+	protected int number = 0;
+	
+	public IA(int number){
+		this.number = number;
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+
+
 	}
+	
+
 
 }

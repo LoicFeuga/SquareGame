@@ -1,5 +1,6 @@
 package controller;
 
+import ia.HumanIA;
 import ia.IA;
 import ia.RandomIA;
 import model.Model;
@@ -33,17 +34,19 @@ public class Game {
 		setIA1();
 		setIA2();
 
-		ia = new RandomIA(frame.getPanel().getGrid(), model);
-		RandomIA ia2 = new RandomIA(frame.getPanel().getGrid(), model);
-		// model.addObserver(ia);
-		// model.addObserver(ia2);
+		model.addObserver(player1);
+		model.addObserver(player2);
 		model.addObserver(frame.getPanel().getGrid());
+		
+		model.turn();
 	}
+	
 
 	private void setIA1() {
 		switch(model.getNiveauJ1()){
 		//Easy
 		case 0:
+			
 			break;
 		//Medium
 		case 1:
@@ -53,6 +56,7 @@ public class Game {
 			break;
 		//Humain
 		case 3:
+			player1 = new HumanIA(1);
 			break;
 		}
 	}
@@ -62,6 +66,7 @@ public class Game {
 		switch(model.getNiveauJ2()){
 		//Easy
 		case 0:
+			player2 = new RandomIA(frame.getPanel().getGrid(), model,2);
 			break;
 		//Medium
 		case 1:

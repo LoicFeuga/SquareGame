@@ -42,6 +42,13 @@ public class Grid {
 		
 	}
 	
+	public int getXMax(){
+		return grid.length;
+	}
+	
+	public int getYMax(){
+		return grid[0].length;
+	}
 	public void print(){
 		for(int i = 0; i < grid.length;i++){
 			for(int j  = 0 ; j < grid[i].length;j++){
