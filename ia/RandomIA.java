@@ -34,14 +34,14 @@ public class RandomIA extends IA {
 
 		if (hm.containsKey("turn")) {
 			if ((int) hm.get("turn") == this.number) {
-
+				int x; int y, position;
 				Square[][] b = grid.getGrid();
+				do{
+				 position = alea(1, 4);
 
-				int position = alea(1, 4);
-
-				int x = alea(0, b.length - 1);
-				int y = alea(0, b[x].length - 1);
-
+				 x = alea(0, b.length - 1);
+				y = alea(0, b[x].length - 1);
+				}while(b[x][y].isComplete());
 				b[x][y].playerTake(model.playerTurn, position, false);
 				model.playerTurn(model.getXInModel(x, position), model.getYInModel(y, position));
 

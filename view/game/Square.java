@@ -37,6 +37,8 @@ public class Square extends JPanel{
 	int botTook = 0;
 	int topTook = 0;
 	
+	boolean isComplete = false;
+	
 	Model model;
 	
 
@@ -139,6 +141,7 @@ public class Square extends JPanel{
 			bot.setBackground(colorApply);
 			left.setBackground(colorApply);
 			right.setBackground(colorApply);
+			isComplete = true;
 			
 		}
 		
@@ -147,6 +150,10 @@ public class Square extends JPanel{
 		//}
 		
 
+	}
+	
+	public boolean isComplete(){
+		return isComplete;
 	}
 
 	public JPanel getTop() {

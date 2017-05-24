@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.Observable;
 
 import controller.Game;
+import view.game.GGrid;
 
 public class Model extends Observable{
 	
 	Grid grid;
+	GGrid ggrid;
 	int niveauJ1;
 	int niveauJ2;
 	int x;
@@ -81,12 +83,21 @@ public class Model extends Observable{
 		playerTurn = playerTurn == 1 ? 2 : 1;
 		//grid.print();
 
-
+		if(this.ggrid.isCompleted()){
+		try {
+			Thread.sleep(500);
 		HashMap hm = new HashMap();
 
 		hm.put("turn", playerTurn);
 		setChanged();
 		notifyObservers(hm);
+
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		}
 
 		
 		
@@ -134,7 +145,16 @@ public class Model extends Observable{
 
 	public void turn() {
 
-		
+		HashMap hm = new HashMap();
+
+		hm.put("turn", playerTurn);
+		setChanged();
+		notifyObservers(hm);
+	}
+
+	public void setGGrid(GGrid grid2) {
+		// TODO Auto-generated method stub
+		this.ggrid = grid2;
 	}
 
 }

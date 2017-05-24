@@ -31,6 +31,7 @@ public class Game {
 		start.dispose();
 		frame = new GFrame(model.getX(), model.getY(), model);
 
+		model.setGGrid(frame.getPanel().getGrid());
 		setIA1();
 		setIA2();
 
@@ -46,7 +47,7 @@ public class Game {
 		switch(model.getNiveauJ1()){
 		//Easy
 		case 0:
-			
+			player1 = new RandomIA(frame.getPanel().getGrid(), model,1);
 			break;
 		//Medium
 		case 1:
