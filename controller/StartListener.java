@@ -29,7 +29,7 @@ public class StartListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 
 		m.setNiveauJ1(convertLevelInInt((String) niveauJ1.getSelectedItem()));
-		m.setNiveauJ1(convertLevelInInt((String) niveauJ2.getSelectedItem()));
+		m.setNiveauJ2(convertLevelInInt((String) niveauJ2.getSelectedItem()));
 		m.setX((int) this.x.getSelectedItem());
 		m.setY((int) this.y.getSelectedItem());
 		m.initGrid(m.getX(), m.getY());
@@ -51,10 +51,6 @@ public class StartListener implements ActionListener{
 		case "Human":
 			ret = 3;
 			break;
-		default:
-			ret = 0;
-			break;
-
 
 		}
 

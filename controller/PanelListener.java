@@ -50,7 +50,7 @@ public class PanelListener implements MouseListener{
 		int yM = getYInModel();
 
 		this.square.playerTake(model.playerTurn, position, false);
-		this.model.playerTurn(xM, yM);
+		this.model.playerTurn(xM, yM); 
 		
 	}
 	

@@ -37,10 +37,13 @@ public class Square extends JPanel{
 	boolean botTook = false;
 	boolean topTook = false;
 	
+	Model model;
+	
 
 	public Square(Model model, int i, int j){
 		super();
 
+		this.model = model;
 		setLayout(new BorderLayout());
 		top = new JPanel();
 		left = new JPanel();
@@ -138,6 +141,11 @@ public class Square extends JPanel{
 			right.setBackground(colorApply);
 			
 		}
+		
+		//if(!cascade){
+			model.turn();
+		//}
+		
 
 	}
 

@@ -63,7 +63,7 @@ public class GGrid extends JPanel implements Observer {
 		
 		if(hm.containsKey("init")){
 			modelGrid = (int[][]) hm.get("init");
-			applyGridToPanel();
+			//applyGridToPanel();
 		}
 		
 		
