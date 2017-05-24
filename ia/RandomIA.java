@@ -34,16 +34,28 @@ public class RandomIA extends IA {
 
 		if (hm.containsKey("turn")) {
 			if ((int) hm.get("turn") == this.number) {
-				int x; int y, position;
+				int x;
+				int y, position;
 				Square[][] b = grid.getGrid();
-				do{
-				 position = alea(1, 4);
+				do {
+					position = alea(1, 4);
 
-				 x = alea(0, b.length - 1);
-				y = alea(0, b[x].length - 1);
-				}while(b[x][y].isComplete());
-				b[x][y].playerTake(model.playerTurn, position, false);
-				model.playerTurn(model.getXInModel(x, position), model.getYInModel(y, position));
+					x = alea(0, b.length - 1);
+					y = alea(0, b[x].length - 1);
+				} while (b[x][y].isComplete() && !b[x][y].positionFree(position));
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					b[x][y].repaint();
+					
+					b[x][y].revalidate();
+					
+					b[x][y].playerTake(model.playerTurn, position, false);
+					model.playerTurn(model.getXInModel(x, position), model.getYInModel(y, position));
+
 
 			}
 		}

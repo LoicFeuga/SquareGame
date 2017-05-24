@@ -19,7 +19,7 @@ public class GFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 		this.setContentPane(this.panel);
-		
+
 		setVisible(true);
 		
 		
