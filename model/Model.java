@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.Observable;
 
 import controller.Game;
+import view.game.GGrid;
 
 public class Model extends Observable{
 	
 	Grid grid;
+	GGrid ggrid;
 	int niveauJ1;
 	int niveauJ2;
 	int x;
@@ -80,13 +82,17 @@ public class Model extends Observable{
 		grid.setXY(x, y, playerTurn);
 		playerTurn = playerTurn == 1 ? 2 : 1;
 		//grid.print();
-
-
-		HashMap hm = new HashMap();
-
-		hm.put("turn", playerTurn);
-		setChanged();
-		notifyObservers(hm);
+		System.out.println(this.ggrid.isCompleted());
+		if(!this.ggrid.isCompleted()){
+			
+				HashMap hm = new HashMap();
+		
+				hm.put("turn", playerTurn);
+				setChanged();
+				notifyObservers(hm);
+	
+		
+		}
 
 		
 		
@@ -134,7 +140,16 @@ public class Model extends Observable{
 
 	public void turn() {
 
-		
+		HashMap hm = new HashMap();
+
+		hm.put("turn", playerTurn);
+		setChanged();
+		notifyObservers(hm);
+	}
+
+	public void setGGrid(GGrid grid2) {
+		// TODO Auto-generated method stub
+		this.ggrid = grid2;
 	}
 
 }
