@@ -146,7 +146,7 @@ public class Square extends JPanel{
 		}
 		
 		//if(!cascade){
-			model.turn();
+
 		//}
 		
 

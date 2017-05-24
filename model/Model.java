@@ -82,20 +82,15 @@ public class Model extends Observable{
 		grid.setXY(x, y, playerTurn);
 		playerTurn = playerTurn == 1 ? 2 : 1;
 		//grid.print();
-
-		if(this.ggrid.isCompleted()){
-		try {
-			Thread.sleep(500);
-		HashMap hm = new HashMap();
-
-		hm.put("turn", playerTurn);
-		setChanged();
-		notifyObservers(hm);
-
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println(this.ggrid.isCompleted());
+		if(!this.ggrid.isCompleted()){
+			
+				HashMap hm = new HashMap();
+		
+				hm.put("turn", playerTurn);
+				setChanged();
+				notifyObservers(hm);
+	
 		
 		}
 
