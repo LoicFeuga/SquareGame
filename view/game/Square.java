@@ -2,14 +2,17 @@ package view.game;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import controller.PanelListener;
 import model.Model;
 
-public class Square extends JPanel{
+public class Square extends JPanel {
 
 	Color colorPlayer1 = Color.BLUE;
 	Color colorPlayer2 = Color.RED;
@@ -69,7 +72,10 @@ public class Square extends JPanel{
 		add(center,BorderLayout.CENTER);
 		add(bot,BorderLayout.SOUTH);
 		add(left,BorderLayout.WEST);
-		add(right,BorderLayout.EAST);		
+		add(right,BorderLayout.EAST);	
+		
+		
+		
 	}
 
 	public void linkRight(Square square){
@@ -97,7 +103,7 @@ public class Square extends JPanel{
 	 */
 	public void playerTake(int player,int position,boolean cascade){
 		Color colorApply = player == 1 ? colorPlayer1 : colorPlayer2;
-
+		
 		switch(position){
 		case 1:
 			top.setBackground(colorApply);
@@ -105,7 +111,6 @@ public class Square extends JPanel{
 			if(!cascade && linkTop){
 				squareTop.playerTake(player, 3, true);
 			}
-			top.revalidate();
 			
 			break;
 		case 2:	
@@ -114,7 +119,6 @@ public class Square extends JPanel{
 			if(!cascade && linkRight){
 				squareRight.playerTake(player, 4, true);
 			}
-			right.revalidate();
 			
 			break;
 		case 3:
@@ -144,14 +148,36 @@ public class Square extends JPanel{
 			isComplete = true;
 			
 		}
+		this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
+		top.paintImmediately(0, 0, top.getWidth(), top.getHeight());
+		left.paintImmediately(0, 0, left.getWidth(), left.getHeight());
+		right.paintImmediately(0, 0, right.getWidth(), right.getHeight());
+		bot.paintImmediately(0, 0, bot.getWidth(), bot.getHeight());
+		center.paintImmediately(0, 0, center.getWidth(), center.getHeight());
+		this.updateUI();
+		left.updateUI();
+		top.updateUI();
+		center.updateUI();
+		right.updateUI();
+		bot.updateUI();
 		
-		//if(!cascade){
-
-		//}
 		
 
 	}
-	
+	public void updateU(){
+		this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
+		top.paintImmediately(0, 0, top.getWidth(), top.getHeight());
+		left.paintImmediately(0, 0, left.getWidth(), left.getHeight());
+		right.paintImmediately(0, 0, right.getWidth(), right.getHeight());
+		bot.paintImmediately(0, 0, bot.getWidth(), bot.getHeight());
+		center.paintImmediately(0, 0, center.getWidth(), center.getHeight());
+		this.updateUI();
+		left.updateUI();
+		top.updateUI();
+		center.updateUI();
+		right.updateUI();
+		bot.updateUI();
+	}
 	public boolean isComplete(){
 		return isComplete;
 	}
@@ -243,5 +269,48 @@ public class Square extends JPanel{
 	public int getTopValue() {
 		return topTook;
 	}
+
+	public boolean positionFree(int position) {
+		boolean ret = false;
+		switch (position) {
+		case 1:
+			if(topTook != 0 ){
+				ret = false;
+			}else{
+				ret = true;
+			}
+			break;
+		case 2:
+
+			if(rightTook != 0){
+				ret = false;
+			}else{
+				ret = true;
+			}
+			break;
+		case 3 :
+
+			if(botTook != 0){
+				ret = false;
+			}else{
+				ret = true;
+			}
+			break;
+		case 4: 
+
+			if(leftTook != 0){
+				ret = false;
+			}else{
+				ret = true;
+			}
+			break;
+			
+
+		}
+		
+		return ret;
+	}
+
+
 
 }

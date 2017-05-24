@@ -30,7 +30,7 @@ public class Game {
 	public void startGame() {
 		start.dispose();
 		frame = new GFrame(model.getX(), model.getY(), model);
-
+		
 		model.setGGrid(frame.getPanel().getGrid());
 		setIA1();
 		setIA2();

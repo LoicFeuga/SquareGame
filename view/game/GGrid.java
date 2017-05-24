@@ -27,11 +27,13 @@ public class GGrid extends JPanel implements Observer {
 				Square square = new Square(model,i,j);
 				//right.setPreferredSize(new Dimension(5, 10));
 				grid[i][j] = square;
-				this.add(square);
+				this.add(grid[i][j]);
+				
 
 			}
 		}
-		
+
+
 		applyLink();
 	}
 
@@ -92,7 +94,6 @@ public class GGrid extends JPanel implements Observer {
 					}
 
 					grid[i][j].add(pan,BorderLayout.NORTH);
-					grid[i][j].revalidate();
 				}
 				
 			}
