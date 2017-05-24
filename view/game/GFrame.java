@@ -21,6 +21,8 @@ public class GFrame extends JFrame{
 		this.setContentPane(this.panel);
 
 		setVisible(true);
+
+
 		
 		
 	}

@@ -44,14 +44,12 @@ public class RandomIA extends IA {
 					y = alea(0, b[x].length - 1);
 				} while (b[x][y].isComplete() && !b[x][y].positionFree(position));
 					try {
-						Thread.sleep(100);
+						Thread.sleep(10);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					b[x][y].repaint();
-					
-					b[x][y].revalidate();
+
 					
 					b[x][y].playerTake(model.playerTurn, position, false);
 					model.playerTurn(model.getXInModel(x, position), model.getYInModel(y, position));

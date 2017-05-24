@@ -73,19 +73,7 @@ public class Square extends JPanel {
 		add(bot,BorderLayout.SOUTH);
 		add(left,BorderLayout.WEST);
 		add(right,BorderLayout.EAST);	
-		repaint();
-
-		paintImmediately(0, 0,getWidth(), getHeight());
-		top.repaint();
-		center.repaint();
-		left.repaint();
-		right.repaint();
-		bot.repaint();
-		top.paintImmediately(0, 0,top.getWidth(), top.getHeight());
-		bot.paintImmediately(0, 0,bot.getWidth(), bot.getHeight());
-		right.paintImmediately(0, 0,right.getWidth(), right.getHeight());
-		left.paintImmediately(0, 0,left.getWidth(), left.getHeight());
-		center.paintImmediately(0, 0,center.getWidth(), center.getHeight());
+		
 		
 		
 	}
@@ -173,13 +161,23 @@ public class Square extends JPanel {
 		right.updateUI();
 		bot.updateUI();
 		
-		//if(!cascade){
-
-		//}
 		
 
 	}
-	
+	public void updateU(){
+		this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
+		top.paintImmediately(0, 0, top.getWidth(), top.getHeight());
+		left.paintImmediately(0, 0, left.getWidth(), left.getHeight());
+		right.paintImmediately(0, 0, right.getWidth(), right.getHeight());
+		bot.paintImmediately(0, 0, bot.getWidth(), bot.getHeight());
+		center.paintImmediately(0, 0, center.getWidth(), center.getHeight());
+		this.updateUI();
+		left.updateUI();
+		top.updateUI();
+		center.updateUI();
+		right.updateUI();
+		bot.updateUI();
+	}
 	public boolean isComplete(){
 		return isComplete;
 	}

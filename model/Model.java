@@ -82,6 +82,7 @@ public class Model extends Observable{
 		grid.setXY(x, y, playerTurn);
 		playerTurn = playerTurn == 1 ? 2 : 1;
 		//grid.print();
+
 		System.out.println(this.ggrid.isCompleted());
 		if(!this.ggrid.isCompleted()){
 			
@@ -140,8 +141,12 @@ public class Model extends Observable{
 
 	public void turn() {
 
+		for(int i = 0; i < ggrid.getGrid().length;i++){
+			for(int j = 0; j < ggrid.getGrid()[i].length;j++){
+				ggrid.getGrid()[i][j].updateU();
+			}
+		}
 		HashMap hm = new HashMap();
-
 		hm.put("turn", playerTurn);
 		setChanged();
 		notifyObservers(hm);
