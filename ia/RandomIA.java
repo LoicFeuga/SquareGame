@@ -10,6 +10,7 @@ import view.game.Square;
 
 public class RandomIA extends IA {
 	GGrid grid;
+	
 	Model model;
 	
 
@@ -18,6 +19,7 @@ public class RandomIA extends IA {
 		this.grid = gGrid;
 		this.model = model;
 		this.number = number;
+		
 	}
 
 	public int alea(int Min, int Max) {
@@ -41,15 +43,10 @@ public class RandomIA extends IA {
 				int position = alea(1, 4);
 
 
-				System.out.println("xMax : "+model.getXMax());
-				System.out.println("yMax : "+model.getYMax());
 
-				int x = alea(0, model.getXMax() - 1);
-				int y = alea(0, model.getYMax() - 1);
-				System.out.println("x: "+x);
-				System.out.println("y :"+y);
-
-				b[x][y].playerTake(2, position, false);
+				int x = alea(0, model.getX() );
+				int y = alea(0, model.getY() );
+				b[x][y].playerTake(model.playerTurn, position, false);
 			}
 		}
 
