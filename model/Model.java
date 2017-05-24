@@ -22,6 +22,45 @@ public class Model extends Observable{
 		this.game = game;
 	}
 	
+	public int getXInModel(int x,int position){
+		int ret = 0;
+		switch(position){
+		case 1	:
+			ret = x + x;
+			break;
+		case 2:
+			ret = x + x + 1;
+			break;
+		case 3:
+			ret = x +  + 2;
+			break;
+		case 4: 
+			ret = x + x +1;
+		}
+		return ret;
+	}
+	
+	public int getYInModel(int y, int position){
+		int ret = 0;
+		
+		switch(position){
+		case 1:
+			ret = y;
+			break;			
+		case 2:
+			ret = y +1;
+			break;
+		case 3:
+			ret = y;
+			break;
+		case 4 :
+			ret = y;
+			break;
+		}
+		
+		return ret;
+	}
+	
 	public void initGrid(int x, int y){
 		this.x = x;
 		this.y =y;
