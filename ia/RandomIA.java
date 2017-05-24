@@ -44,8 +44,8 @@ public class RandomIA extends IA {
 
 
 
-				int x = alea(0, model.getX() );
-				int y = alea(0, model.getY() );
+				int x = alea(0, b.length -1);
+				int y = alea(0, b[x].length -1);
 				b[x][y].playerTake(model.playerTurn, position, false);
 			}
 		}
