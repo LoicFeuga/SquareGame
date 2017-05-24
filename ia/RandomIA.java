@@ -10,16 +10,15 @@ import view.game.Square;
 
 public class RandomIA extends IA {
 	GGrid grid;
-	
+
 	Model model;
-	
 
 	public RandomIA(GGrid gGrid, Model model, int number) {
 		super(number);
 		this.grid = gGrid;
 		this.model = model;
 		this.number = number;
-		
+
 	}
 
 	public int alea(int Min, int Max) {
@@ -32,22 +31,20 @@ public class RandomIA extends IA {
 		//
 
 		HashMap hm = (HashMap) arg;
-		
-		if (hm.containsKey("turn")) {
-			System.out.println(hm.get("turn"));
-			if ((int) hm.get("turn") == this.number) {
 
+		if (hm.containsKey("turn")) {
+			if ((int) hm.get("turn") == this.number) {
 
 				Square[][] b = grid.getGrid();
 
 				int position = alea(1, 4);
 
+				int x = alea(0, b.length - 1);
+				int y = alea(0, b[x].length - 1);
 
-
-				int x = alea(0, b.length -1);
-				int y = alea(0, b[x].length -1);
 				b[x][y].playerTake(model.playerTurn, position, false);
-				model.playerTurn(model.getXInModel(x, position),model.getYInModel(y, position));
+				model.playerTurn(model.getXInModel(x, position), model.getYInModel(y, position));
+
 			}
 		}
 

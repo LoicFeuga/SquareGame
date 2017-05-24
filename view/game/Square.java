@@ -32,10 +32,10 @@ public class Square extends JPanel{
 	boolean linkLeft = false;
 	boolean linkRight = false;
 
-	boolean leftTook = false;
-	boolean rightTook = false;
-	boolean botTook = false;
-	boolean topTook = false;
+	int leftTook = 0;
+	int rightTook = 0;
+	int botTook = 0;
+	int topTook = 0;
 	
 	Model model;
 	
@@ -99,7 +99,7 @@ public class Square extends JPanel{
 		switch(position){
 		case 1:
 			top.setBackground(colorApply);
-			topTook = true;
+			topTook = player;
 			if(!cascade && linkTop){
 				squareTop.playerTake(player, 3, true);
 			}
@@ -108,7 +108,7 @@ public class Square extends JPanel{
 			break;
 		case 2:	
 			right.setBackground(colorApply);
-			rightTook = true;
+			rightTook = player;
 			if(!cascade && linkRight){
 				squareRight.playerTake(player, 4, true);
 			}
@@ -117,14 +117,14 @@ public class Square extends JPanel{
 			break;
 		case 3:
 			bot.setBackground(colorApply);
-			botTook = true;
+			botTook = player;
 			if(!cascade && linkBot){
 				squareBot.playerTake(player, 1, true);
 			}
 			break;
 		case 4:
 			left.setBackground(colorApply);
-			leftTook = true;
+			leftTook = player;
 			if(!cascade && linkLeft){
 				squareLeft.playerTake(player, 2, true);
 			}
@@ -133,7 +133,7 @@ public class Square extends JPanel{
 			break;
 		}
 		
-		if(leftTook && topTook && botTook && rightTook){
+		if(leftTook != 0 && topTook != 0 && botTook != 0 && rightTook != 0){
 			center.setBackground(colorApply);
 			top.setBackground(colorApply);
 			bot.setBackground(colorApply);
@@ -219,6 +219,22 @@ public class Square extends JPanel{
 
 	public void setSquareBot(Square squareBot) {
 		this.squareBot = squareBot;
+	}
+
+	public int getLeftValue() {
+		return leftTook;
+	}
+
+	public int getRightValue() {
+		return rightTook;
+	}
+
+	public int getBotValue() {
+		return botTook;
+	}
+
+	public int getTopValue() {
+		return topTook;
 	}
 
 }

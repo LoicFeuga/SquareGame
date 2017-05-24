@@ -79,7 +79,7 @@ public class Model extends Observable{
 	public void playerTurn(int x, int y){
 		grid.setXY(x, y, playerTurn);
 		playerTurn = playerTurn == 1 ? 2 : 1;
-		grid.print();
+		//grid.print();
 
 
 		HashMap hm = new HashMap();
