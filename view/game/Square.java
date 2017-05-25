@@ -104,6 +104,8 @@ public class Square extends JPanel {
 	public void playerTake(int player,int position,boolean cascade){
 		Color colorApply = player == 1 ? colorPlayer1 : colorPlayer2;
 		
+		if(!this.positionFree(position)) return;
+		
 		switch(position){
 		case 1:
 			top.setBackground(colorApply);

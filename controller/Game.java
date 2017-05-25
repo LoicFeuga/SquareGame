@@ -32,12 +32,14 @@ public class Game {
 		frame = new GFrame(model.getX(), model.getY(), model);
 		
 		model.setGrid(frame.getPanel().getGrid());
+		
 		setIA1();
 		setIA2();
 
 		model.addObserver(player1);
 		model.addObserver(player2);
-		model.addObserver(frame.getPanel().getGrid());
+		model.addObserver(frame.getPanel().getPlayer1());
+		model.addObserver(frame.getPanel().getPlayer2());
 		
 		model.firstTurn();
 	}

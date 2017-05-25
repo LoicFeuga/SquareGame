@@ -5,10 +5,11 @@ import java.util.Observer;
 
 public class IA implements Observer {
 
-	protected int number = 0;
+	protected int playerNumber = 0;
+	protected int speedThink = 10;
 	
 	public IA(int number){
-		this.number = number;
+		this.playerNumber = number;
 	}
 	
 	@Override

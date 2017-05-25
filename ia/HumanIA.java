@@ -18,7 +18,7 @@ public class HumanIA extends IA  {
 		HashMap hm = (HashMap) arg;
 
 		if(hm.containsKey("turn")){
-			if((int)hm.get("turn") == this.number){
+			if((int)hm.get("turn") == this.playerNumber){
 				
 			}
 		}

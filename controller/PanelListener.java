@@ -46,8 +46,11 @@ public class PanelListener implements MouseListener{
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		this.square.playerTake(model.playerTurn, position, false);
-		this.model.endTurn(); 
+		if(square.positionFree(position)){
+
+			this.square.playerTake(model.playerTurn, position, false);
+			this.model.endTurn(); 
+		}
 	}
 	
 	

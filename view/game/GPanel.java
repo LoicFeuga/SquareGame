@@ -18,6 +18,8 @@ public class GPanel extends JPanel{
 	private final String[] difficulties = {"Easy","Medium","Hard"};
 	private JButton uiStartBtn;
 	private GGrid panCenter;
+	GStatPlayer player1 ;
+	GStatPlayer player2;
 	
 	/**
 	 * Créé le panel entier du jeu avec row et colum
@@ -54,14 +56,36 @@ public class GPanel extends JPanel{
 		
 		
 		//END PANEL CENTER
+		
+		//PANEL LEFT
+		player1 = new GStatPlayer(model.getNameJ1());
+		add(player1,BorderLayout.WEST);
+
+		//END PANEL LEFT
+		
+		//PANEL RIGHT
+
+		player2 = new GStatPlayer(model.getNameJ2());
+		add(player2,BorderLayout.EAST);
+		//END PANEL RIGHT
 
 		this.add(new JPanel(), BorderLayout.SOUTH);
-		this.add(new JPanel(), BorderLayout.EAST);
-		this.add(new JPanel(), BorderLayout.WEST);
 	}
 	
+	void updateU(){
+		player1.repaint();
+		player2.repaint();
+	}
 	public GGrid getGrid(){
 		return panCenter;
+	}
+
+	public GStatPlayer getPlayer1() {
+		return player1;
+	}
+
+	public GStatPlayer getPlayer2() {
+		return player2;
 	}
 
 }

@@ -30,6 +30,8 @@ public class StartListener implements ActionListener{
 
 		m.setNiveauJ1(convertLevelInInt((String) niveauJ1.getSelectedItem()));
 		m.setNiveauJ2(convertLevelInInt((String) niveauJ2.getSelectedItem()));
+		m.setNameJ1((String) niveauJ1.getSelectedItem());
+		m.setNameJ2((String) niveauJ2.getSelectedItem());
 		m.setX((int) this.x.getSelectedItem());
 		m.setY((int) this.y.getSelectedItem());
 		m.initGrid(m.getX(), m.getY());

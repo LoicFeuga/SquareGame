@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import model.Model;
 
-public class GGrid extends JPanel implements Observer {
+public class GGrid extends JPanel  {
 
 	Square[][] grid;
 	int[][] modelGrid;
@@ -59,17 +59,7 @@ public class GGrid extends JPanel implements Observer {
 	}
 
 
-	@Override
-	public void update(Observable o, Object arg) {
-		HashMap hm = (HashMap) arg;
-		
-		if(hm.containsKey("init")){
-			modelGrid = (int[][]) hm.get("init");
-			//applyGridToPanel();
-		}
-		
-		
-	}
+
 	
 	
 	/**

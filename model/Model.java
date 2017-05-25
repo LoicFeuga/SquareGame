@@ -34,9 +34,17 @@ public class Model extends Observable {
 	 * Réf game
 	 */
 	Game game;
-	// 1 = j1
-	// 2 = j2
+	/**
+	 * Le tour du joueur en question
+	 */
 	public int playerTurn = 1;
+	/**
+	 * 
+	 * Pour les stats 
+	 */
+		private String nameJ1;
+		private String nameJ2;
+		
 
 	public Model(Game game) {
 		this.game = game;
@@ -125,6 +133,22 @@ public class Model extends Observable {
 	public void setGrid(GGrid grid2) {
 		// TODO Auto-generated method stub
 		this.grid = grid2;
+	}
+
+	public String getNameJ1() {
+		return nameJ1;
+	}
+
+	public String getNameJ2() {
+		return nameJ2;
+	}
+
+	public void setNameJ1(String nameJ1) {
+		this.nameJ1 = nameJ1;
+	}
+
+	public void setNameJ2(String nameJ2) {
+		this.nameJ2 = nameJ2;
 	}
 
 }

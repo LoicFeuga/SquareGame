@@ -16,6 +16,7 @@ public class GFrame extends JFrame{
 		setLocationRelativeTo(null);
 		
 		this.panel = new GPanel(r, c, model);
+		this.panel.updateU();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 		this.setContentPane(this.panel);
