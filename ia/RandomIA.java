@@ -36,13 +36,16 @@ public class RandomIA extends IA {
 			if ((int) hm.get("turn") == this.number) {
 				int x;
 				int y, position;
-				Square[][] b = grid.getGrid();
+				Square[][] squares = grid.getGrid();
+				
 				do {
+					//1,2,3,4 = N,E,S,O
 					position = alea(1, 4);
 
-					x = alea(0, b.length - 1);
-					y = alea(0, b[x].length - 1);
-				} while (b[x][y].isComplete() && !b[x][y].positionFree(position));
+					x = alea(0, squares.length - 1);
+					y = alea(0, squares[x].length - 1);
+				} while (!squares[x][y].positionFree(position));
+				
 					try {
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
@@ -51,8 +54,8 @@ public class RandomIA extends IA {
 					}
 
 					
-					b[x][y].playerTake(model.playerTurn, position, false);
-					model.playerTurn(model.getXInModel(x, position), model.getYInModel(y, position));
+					squares[x][y].playerTake(model.playerTurn, position, false);
+					model.endTurn();
 
 
 			}

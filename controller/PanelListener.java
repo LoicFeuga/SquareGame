@@ -46,52 +46,10 @@ public class PanelListener implements MouseListener{
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		int xM = getXInModel();
-		int yM = getYInModel();
-
 		this.square.playerTake(model.playerTurn, position, false);
-		this.model.playerTurn(xM, yM); 
-		
+		this.model.endTurn(); 
 	}
 	
-	private int getXInModel(){
-		int ret = 0;
-		switch(this.position){
-		case 1	:
-			ret = this.x + this.x;
-			break;
-		case 2:
-			ret = this.x + this.x + 1;
-			break;
-		case 3:
-			ret = this.x + this.x + 2;
-			break;
-		case 4: 
-			ret = this.x + this.x +1;
-		}
-		return ret;
-	}
-	
-	private int getYInModel(){
-		int ret = 0;
-		
-		switch(this.position){
-		case 1:
-			ret = this.y;
-			break;			
-		case 2:
-			ret = this.y +1;
-			break;
-		case 3:
-			ret = this.y;
-			break;
-		case 4 :
-			ret = this.y;
-			break;
-		}
-		
-		return ret;
-	}
 	
 	@Override
 	public void mouseEntered(MouseEvent e) {

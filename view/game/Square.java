@@ -141,29 +141,17 @@ public class Square extends JPanel {
 		
 		if(leftTook != 0 && topTook != 0 && botTook != 0 && rightTook != 0){
 			center.setBackground(colorApply);
-			top.setBackground(colorApply);
-			bot.setBackground(colorApply);
-			left.setBackground(colorApply);
-			right.setBackground(colorApply);
 			isComplete = true;
 			
 		}
-		this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
-		top.paintImmediately(0, 0, top.getWidth(), top.getHeight());
-		left.paintImmediately(0, 0, left.getWidth(), left.getHeight());
-		right.paintImmediately(0, 0, right.getWidth(), right.getHeight());
-		bot.paintImmediately(0, 0, bot.getWidth(), bot.getHeight());
-		center.paintImmediately(0, 0, center.getWidth(), center.getHeight());
-		this.updateUI();
-		left.updateUI();
-		top.updateUI();
-		center.updateUI();
-		right.updateUI();
-		bot.updateUI();
-		
+		updateU();
 		
 
 	}
+	
+	/**
+	 * Permet de réafficher le square
+	 */
 	public void updateU(){
 		this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
 		top.paintImmediately(0, 0, top.getWidth(), top.getHeight());
@@ -274,34 +262,34 @@ public class Square extends JPanel {
 		boolean ret = false;
 		switch (position) {
 		case 1:
-			if(topTook != 0 ){
-				ret = false;
-			}else{
+			if(topTook == 0 ){
 				ret = true;
+			}else{
+				ret = false;
 			}
 			break;
 		case 2:
 
-			if(rightTook != 0){
-				ret = false;
-			}else{
+			if(rightTook == 0){
 				ret = true;
+			}else{
+				ret = false;
 			}
 			break;
 		case 3 :
 
-			if(botTook != 0){
-				ret = false;
-			}else{
+			if(botTook == 0 ){
 				ret = true;
+			}else{
+				ret = false;
 			}
 			break;
 		case 4: 
 
-			if(leftTook != 0){
-				ret = false;
-			}else{
+			if(leftTook == 0){
 				ret = true;
+			}else{
+				ret = false;
 			}
 			break;
 			

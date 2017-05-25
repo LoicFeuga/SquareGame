@@ -6,99 +6,71 @@ import java.util.Observable;
 import controller.Game;
 import view.game.GGrid;
 
-public class Model extends Observable{
-	
-	Grid grid;
-	GGrid ggrid;
+public class Model extends Observable {
+
+	/**
+	 * Ref vers la grille des Squares
+	 */
+	GGrid grid;
+	/**
+	 * Niveau du joueur 1
+	 * Ex : 1,2,3,4
+	 */
 	int niveauJ1;
+	/**
+	 * Niveau du joueur 2
+	 * Ex : 1,2,3,4
+	 */
 	int niveauJ2;
+	/**
+	 * Nombre de carré en ligne
+	 */
 	int x;
+	/**
+	 * Nombre  carré en colonne
+	 */
 	int y;
+	/**
+	 * Réf game
+	 */
 	Game game;
-	//1 = j1
-	//2 = j2
+	// 1 = j1
+	// 2 = j2
 	public int playerTurn = 1;
-	
-	
-	public Model(Game game){
+
+	public Model(Game game) {
 		this.game = game;
 	}
-	
-	public int getXInModel(int x,int position){
-		int ret = 0;
-		switch(position){
-		case 1	:
-			ret = x + x;
-			break;
-		case 2:
-			ret = x + x + 1;
-			break;
-		case 3:
-			ret = x +  + 2;
-			break;
-		case 4: 
-			ret = x + x +1;
-		}
-		return ret;
-	}
-	
-	public int getYInModel(int y, int position){
-		int ret = 0;
-		
-		switch(position){
-		case 1:
-			ret = y;
-			break;			
-		case 2:
-			ret = y +1;
-			break;
-		case 3:
-			ret = y;
-			break;
-		case 4 :
-			ret = y;
-			break;
-		}
-		
-		return ret;
-	}
-	
-	public void initGrid(int x, int y){
+
+	public void initGrid(int x, int y) {
 		this.x = x;
-		this.y =y;
-		this.grid = new Grid(x, y);
-		game.startGame();
-		HashMap hm = new HashMap<String,Object>();
-		hm.put("init", grid.getGrid());
+		this.y = y;
+
 		setChanged();
-		
-		notifyObservers(hm);
+		notifyObservers();
+		game.startGame();
+
 	}
-	
-	public int getTurn(){
+
+	public int getTurn() {
 		return playerTurn;
 	}
-	public void playerTurn(int x, int y){
-		grid.setXY(x, y, playerTurn);
-		playerTurn = playerTurn == 1 ? 2 : 1;
-		//grid.print();
 
-		System.out.println(this.ggrid.isCompleted());
-		if(!this.ggrid.isCompleted()){
-			
-				HashMap hm = new HashMap();
-		
-				hm.put("turn", playerTurn);
-				setChanged();
-				notifyObservers(hm);
-	
-		
+	public void endTurn() {
+		playerTurn = playerTurn == 1 ? 2 : 1;
+
+		if (!this.grid.isCompleted()) {
+
+			HashMap hm = new HashMap();
+			hm.put("turn", playerTurn);
+			setChanged();
+			notifyObservers(hm);
+		}else{
+			System.out.println("end");
 		}
 
-		
-		
 	}
-	
+
 	public int getNiveauJ1() {
 		return niveauJ1;
 	}
@@ -113,14 +85,6 @@ public class Model extends Observable{
 
 	public int getY() {
 		return y;
-	}
-	
-	public int getXMax(){
-		return grid.getXMax();
-	}
-	
-	public int getYMax(){
-		return grid.getYMax();
 	}
 
 	public void setNiveauJ1(int niveauJ1) {
@@ -139,22 +103,28 @@ public class Model extends Observable{
 		this.y = y;
 	}
 
-	public void turn() {
-
-		for(int i = 0; i < ggrid.getGrid().length;i++){
-			for(int j = 0; j < ggrid.getGrid()[i].length;j++){
-				ggrid.getGrid()[i][j].updateU();
-			}
-		}
+	/*
+	 * Permet de lancer le premier tour en envoyant un event aux observer
+	 */
+	public void firstTurn() {
+		printAllPanel();
 		HashMap hm = new HashMap();
 		hm.put("turn", playerTurn);
 		setChanged();
 		notifyObservers(hm);
 	}
 
-	public void setGGrid(GGrid grid2) {
+	private void printAllPanel() {
+		for (int i = 0; i < grid.getGrid().length; i++) {
+			for (int j = 0; j < grid.getGrid()[i].length; j++) {
+				grid.getGrid()[i][j].updateU();
+			}
+		}
+	}
+
+	public void setGrid(GGrid grid2) {
 		// TODO Auto-generated method stub
-		this.ggrid = grid2;
+		this.grid = grid2;
 	}
 
 }

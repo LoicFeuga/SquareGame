@@ -31,7 +31,7 @@ public class Game {
 		start.dispose();
 		frame = new GFrame(model.getX(), model.getY(), model);
 		
-		model.setGGrid(frame.getPanel().getGrid());
+		model.setGrid(frame.getPanel().getGrid());
 		setIA1();
 		setIA2();
 
@@ -39,7 +39,7 @@ public class Game {
 		model.addObserver(player2);
 		model.addObserver(frame.getPanel().getGrid());
 		
-		model.turn();
+		model.firstTurn();
 	}
 	
 
